@@ -64,3 +64,23 @@ stages:
       hash: md5
       md5: 2b98965823457fdb6526d3c5df182d03
       size: 640016
+  transform_hybrid:
+    cmd: python src/features/transform_hybrid_data.py
+    deps:
+    - path: data/processed/collab_filtered_songs.csv
+      hash: md5
+      md5: 2defff598e1a8ecb6f8eb0c327ef3a16
+      size: 9076697
+    - path: models/content_transformer.joblib
+      hash: md5
+      md5: 08961eee6dd6b919ea59650cc1fdbc1d
+      size: 142013
+    - path: src/features/transform_hybrid_data.py
+      hash: md5
+      md5: 139f36ea24a3b02f984149aed5802e6f
+      size: 1381
+    outs:
+    - path: data/processed/transformed_hybrid_data.npz
+      hash: md5
+      md5: 9ad1496ba700b8fd451815b39ee58c79
+      size: 2980276

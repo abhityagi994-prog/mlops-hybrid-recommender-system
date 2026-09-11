@@ -26,3 +26,12 @@ stages:
       - data/processed/collab_filtered_songs.csv
       - data/processed/track_ids.npy
       - data/processed/interaction_matrix.npz
+  
+  transform_hybrid:
+    cmd: python src/features/transform_hybrid_data.py
+    deps:
+      - src/features/transform_hybrid_data.py
+      - data/processed/collab_filtered_songs.csv
+      - models/content_transformer.joblib
+    outs:
+      - data/processed/transformed_hybrid_data.npz
