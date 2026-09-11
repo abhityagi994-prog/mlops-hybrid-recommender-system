@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  clean_data:
+    cmd: python src/data/data_cleaning.py
+    deps:
+    - path: data/raw/songs/Music Info.csv
+      hash: md5
+      md5: e63b74919a3cdada5c804df4666391c9
+      size: 14985870
+    - path: src/data/data_cleaning.py
+      hash: md5
+      md5: f101146a8217709d78caea813a0b96f6
+      size: 1332
+    outs:
+    - path: data/processed/cleaned_songs.csv
+      hash: md5
+      md5: 97598052e7eb887583fd1051b4cf2cf8
+      size: 15041675
+  transform_content:
+    cmd: python src/features/content_based_filtering.py
+    deps:
+    - path: data/processed/cleaned_songs.csv
+      hash: md5
+      md5: 97598052e7eb887583fd1051b4cf2cf8
+      size: 15041675
+    - path: src/features/content_based_filtering.py
+      hash: md5
+      md5: 825dea63fbcdaaef0e2d7b15dd196f4a
+      size: 3214
+    outs:
+    - path: data/processed/transformed_content_data.npz
+      hash: md5
+      md5: 485bf5370b18ba773fbc864de9fc2095
+      size: 4535889
+    - path: models/content_transformer.joblib
+      hash: md5
+      md5: 08961eee6dd6b919ea59650cc1fdbc1d
+      size: 142013
