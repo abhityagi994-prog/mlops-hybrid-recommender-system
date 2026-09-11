@@ -15,3 +15,14 @@ stages:
     outs:
       - data/processed/transformed_content_data.npz
       - models/content_transformer.joblib
+
+  collaborative_filtering:
+    cmd: python src/models/collaborative_filtering.py
+    deps:
+      - data/raw/songs/User Listening History.csv
+      - data/processed/cleaned_songs.csv
+      - src/models/collaborative_filtering.py
+    outs:
+      - data/processed/collab_filtered_songs.csv
+      - data/processed/track_ids.npy
+      - data/processed/interaction_matrix.npz
